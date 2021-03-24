@@ -106,18 +106,21 @@
                         <div class="row">
                             <div class="custom-file col-lg-4 col-sm-12">
                                 <label class="custom-file-label" for="customFile">上传图片1</label>
-                                <input type="file" class="custom-file-input" id="customFile" name="img1" onchange="compress()">
+                                <input type="file" class="custom-file-input" id="customFile" name="img1"
+                                       onchange="compress()">
                                 <input type="text" style="display: none" name="rimg1" id="rimg1">
-                                	<img id="showimg" src="">
-
                             </div>
                             <div class="custom-file col-lg-4 col-sm-12">
-                                <label class="custom-file-label" for="customFile">上传图片2</label>
-                                <input type="file" class="custom-file-input" id="customFile2" name="img2">
+                                <label class="custom-file-label" for="customFile2">上传图片2</label>
+                                <input type="file" class="custom-file-input" id="customFile2" name="img2"
+                                       onchange="compress2()">
+                                <input type="text" style="display: none" name="rimg2" id="rimg2">
                             </div>
                             <div class="custom-file col-lg-4 col-sm-12">
-                                <label class="custom-file-label" for="customFile">上传图片3</label>
-                                <input type="file" class="custom-file-input" id="customFile3" name="img3">
+                                <label class="custom-file-label" for="customFile3">上传图片3</label>
+                                <input type="file" class="custom-file-input" id="customFile3" name="img3"
+                                       onchange="compress3()">
+                                <input type="text" style="display: none" name="rimg3" id="rimg3">
                             </div>
                         </div>
                     </div>
@@ -140,35 +143,93 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-// 对图片进行压缩
-function compress() {
-    let fileObj = document.getElementById('customFile').files[0] //上传文件的对象
-    let reader = new FileReader()
-    reader.readAsDataURL(fileObj)
-    reader.onload = function(e) {
-        let image = new Image() //新建一个img标签（还没嵌入DOM节点)
-        image.src = e.target.result
-        image.onload = function() {
-            let canvas = document.createElement('canvas'),
-            context = canvas.getContext('2d'),
-            imageWidth = image.width / 2,    //压缩后图片的大小
-            imageHeight = image.height / 2,
-            data = ''
+    // 对图片进行压缩
+    function compress() {
+        let fileObj = document.getElementById('customFile').files[0] //上传文件的对象
+        let reader = new FileReader()
+        reader.readAsDataURL(fileObj)
+        reader.onload = function (e) {
+            let image = new Image() //新建一个img标签（还没嵌入DOM节点)
+            image.src = e.target.result
+            image.onload = function () {
+                let canvas = document.createElement('canvas'),
+                    context = canvas.getContext('2d'),
+                    imageWidth = image.width / 5,    //压缩后图片的大小
+                    imageHeight = image.height / 5,
+                    data = ''
 
-            canvas.width = imageWidth
-            canvas.height = imageHeight
+                canvas.width = imageWidth
+                canvas.height = imageHeight
 
-            context.drawImage(image, 0, 0, imageWidth, imageHeight)
-            data = canvas.toDataURL('image/jpeg')
+                context.drawImage(image, 0, 0, imageWidth, imageHeight)
+                data = canvas.toDataURL('image/jpeg')
 
-            //压缩完成
-            document.getElementById('showimg').src = data
-            var File1 = document.getElementById('rimg1');
-            File1.value = data;
-            {#console.log(data)#}
+                //压缩完成
+                {#document.getElementById('showimg').src = data#}
+                var File1 = document.getElementById('rimg1');
+                File1.value = data;
+                {#console.log(data)#}
+            }
         }
     }
-}
+
+    function compress2() {
+        let fileObj = document.getElementById('customFile2').files[0] //上传文件的对象
+        let reader = new FileReader()
+        reader.readAsDataURL(fileObj)
+        reader.onload = function (e) {
+            let image = new Image() //新建一个img标签（还没嵌入DOM节点)
+            image.src = e.target.result
+            image.onload = function () {
+                let canvas = document.createElement('canvas'),
+                    context = canvas.getContext('2d'),
+                    imageWidth = image.width / 5,    //压缩后图片的大小
+                    imageHeight = image.height / 5,
+                    data = ''
+
+                canvas.width = imageWidth
+                canvas.height = imageHeight
+
+                context.drawImage(image, 0, 0, imageWidth, imageHeight)
+                data = canvas.toDataURL('image/jpeg')
+
+                //压缩完成
+                {#document.getElementById('showimg').src = data#}
+                var File2 = document.getElementById('rimg2');
+                File2.value = data;
+                {#console.log(data)#}
+            }
+        }
+    }
+
+    function compress3() {
+        let fileObj = document.getElementById('customFile3').files[0] //上传文件的对象
+        let reader = new FileReader()
+        reader.readAsDataURL(fileObj)
+        reader.onload = function (e) {
+            let image = new Image() //新建一个img标签（还没嵌入DOM节点)
+            image.src = e.target.result
+            image.onload = function () {
+                let canvas = document.createElement('canvas'),
+                    context = canvas.getContext('2d'),
+                    imageWidth = image.width / 5,    //压缩后图片的大小
+                    imageHeight = image.height / 5,
+                    data = ''
+
+                canvas.width = imageWidth
+                canvas.height = imageHeight
+
+                context.drawImage(image, 0, 0, imageWidth, imageHeight)
+                data = canvas.toDataURL('image/jpeg')
+
+                //压缩完成
+                {#document.getElementById('showimg').src = data#}
+                var File3 = document.getElementById('rimg3');
+                File3.value = data;
+                {#console.log(data)#}
+            }
+        }
+    }
 </script>
 
 <script>
@@ -176,7 +237,8 @@ function compress() {
         document.subForm.action = "/submit/"
         document.subForm.submit();
     }
-    function updateBtn(){
+
+    function updateBtn() {
         document.subForm.action = "/update/"
         document.subForm.submit();
     }

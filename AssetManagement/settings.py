@@ -90,7 +90,6 @@ DATABASES = {
         'HOST': '123.56.127.98',  # HOST
         # 'HOST': 'localhost', # HOST
         'POST': 3306,  # 端口
-
     }
 }
 

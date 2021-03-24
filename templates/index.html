@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <!-- 必须的 meta 标签 -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap 的 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title>资产信息输入</title>
+</head>
+<body>
+<div class="content">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+            <h1>hello</h1>
+            <div class="form">
+                <form action="" method="post" enctype="multipart/form-data" id="fromId" name="subForm">
+                    {% csrf_token %}
+                    <div class="form-group row">
+                        <label for="IpZcID" class="col-sm-2 col-form-label">资产编号</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="IpZcID" name="IpZcID">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="IpZcName" class="col-sm-2 col-form-label">资产名称</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="IpZcName" name="IpZcName">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="InUsePart" class="col-sm-2 col-form-label">使用部门</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InUsePart" name="InUsePart" value="信息化工作办公室">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="InUsePeople" class="col-sm-2 col-form-label">使用人</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="InUsePeople" id="InUsePeople1"
+                                   value="王智勇">
+                            <label class="form-check-label" for="InUsePeople1">
+                                王智勇 &nbsp;
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="InUsePeople" id="InUsePeople2"
+                                   value="宋果昇">
+                            <label class="form-check-label" for="InUsePeople2">
+                                宋果昇 &nbsp;
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="InUsePeople" id="InUsePeople3"
+                                   value="刁广强">
+                            <label class="form-check-label" for="InUsePeople3">
+                                刁广强 &nbsp;
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="InUsePeople" id="InUsePeople4"
+                                   value="董丹丹">
+                            <label class="form-check-label" for="InUsePeople4">
+                                董丹丹 &nbsp;
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="InUsePeople" id="InUsePeople5"
+                                   value="梅彦玲">
+                            <label class="form-check-label" for="InUsePeople5">
+                                梅彦玲 &nbsp;
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="InUsePeople" id="InUsePeople6"
+                                   value="周春萍">
+                            <label class="form-check-label" for="InUsePeople6">
+                                周春萍 &nbsp;
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="InUsePeople" id="InUsePeople7"
+                                   value="黄冉">
+                            <label class="form-check-label" for="InUsePeople7">
+                                黄冉 &nbsp;
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="InUseLocat" class="col-sm-2 col-form-label">使用地点</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="InUseLocat" name="InUseLocat">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="Text" class="col-sm-2 col-form-label">备注</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="Text" name="Text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="custom-file col-lg-4 col-sm-12">
+                                <label class="custom-file-label" for="customFile">上传图片1</label>
+                                <input type="file" class="custom-file-input" id="customFile" name="img1" onchange="compress()">
+                                <input type="text" style="display: none" name="rimg1" id="rimg1">
+                                	<img id="showimg" src="">
+
+                            </div>
+                            <div class="custom-file col-lg-4 col-sm-12">
+                                <label class="custom-file-label" for="customFile">上传图片2</label>
+                                <input type="file" class="custom-file-input" id="customFile2" name="img2">
+                            </div>
+                            <div class="custom-file col-lg-4 col-sm-12">
+                                <label class="custom-file-label" for="customFile">上传图片3</label>
+                                <input type="file" class="custom-file-input" id="customFile3" name="img3">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6 col-6">
+                            <button type="button" class="btn btn-primary" onclick="addBtn()">提交新增</button>
+                        </div>
+                        <div class="col-sm-6 col-6">
+                            <button type="button" class="btn btn-primary" onclick="updateBtn()">提交修改</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-1"></div>
+    </div>
+</div>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+// 对图片进行压缩
+function compress() {
+    let fileObj = document.getElementById('customFile').files[0] //上传文件的对象
+    let reader = new FileReader()
+    reader.readAsDataURL(fileObj)
+    reader.onload = function(e) {
+        let image = new Image() //新建一个img标签（还没嵌入DOM节点)
+        image.src = e.target.result
+        image.onload = function() {
+            let canvas = document.createElement('canvas'),
+            context = canvas.getContext('2d'),
+            imageWidth = image.width / 2,    //压缩后图片的大小
+            imageHeight = image.height / 2,
+            data = ''
+
+            canvas.width = imageWidth
+            canvas.height = imageHeight
+
+            context.drawImage(image, 0, 0, imageWidth, imageHeight)
+            data = canvas.toDataURL('image/jpeg')
+
+            //压缩完成
+            document.getElementById('showimg').src = data
+            var File1 = document.getElementById('rimg1');
+            File1.value = data;
+            {#console.log(data)#}
+        }
+    }
+}
+</script>
+
+<script>
+    function addBtn() {
+        document.subForm.action = "/submit/"
+        document.subForm.submit();
+    }
+    function updateBtn(){
+        document.subForm.action = "/update/"
+        document.subForm.submit();
+    }
+</script>
+
+</body>
